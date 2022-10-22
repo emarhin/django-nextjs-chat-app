@@ -55,21 +55,21 @@ INSTALLED_APPS = [
 ASGI_APPLICATION = "socket_system.asgi.application"
 
 #channel layer this help to perform redis by storing the data in memory
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [("127.0.0.1", 6379)],
-#         },
-#     },
-# }
-
-## Not to be used in production
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels.layers.InMemoryChannelLayer"
-    }
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": ["redis://default:tJ4mEXemlJjwO9euJlRs@containers-us-west-97.railway.app:6955"],
+        },
+    },
 }
+
+## Not to be used in production
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels.layers.InMemoryChannelLayer"
+#     }
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
