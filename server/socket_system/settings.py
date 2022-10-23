@@ -44,7 +44,8 @@ INSTALLED_APPS = [
 
 
 #apps
-"chat"
+"chat",
+"api_socket"
 
 
 ]
